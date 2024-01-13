@@ -34,11 +34,11 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg):
         """This will exit the program"""
         return True
-    
+
     def do_EOF(self, arg):
         """This will exit the program"""
         return True
-    
+
     def emptyline(self):
         """This will do nothing"""
         pass
