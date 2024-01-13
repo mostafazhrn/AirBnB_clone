@@ -3,6 +3,9 @@
 import cmd
 import models
 import re
+import json
+import os
+from os import getenv
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -12,7 +15,6 @@ from models.review import Review
 from models.amenity import Amenity
 from models import storage
 from shlex import split
-from os import getenv
 
 
 class HBNBCommand(cmd.Cmd):
