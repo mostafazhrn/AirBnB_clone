@@ -2,6 +2,7 @@
 import os
 import json
 import uuid
+import models
 from models import storage
 from models.storage import storage
 from models.engine import FileStorage
