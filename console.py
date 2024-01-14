@@ -13,7 +13,8 @@ from datetime import datetime
 import shlex
 
 clsses = {"BaseModel": BaseModel, "User": User, "Place": Place,
-            "State": State, "City": City, "Review": Review, "Amenity": Amenity}
+          "State": State, "City": City, "Review": Review,
+          "Amenity": Amenity}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -26,11 +27,11 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg):
         """This shall exit the program"""
         return True
-    
+
     def do_EOF(self, arg):
         """This shall exit the program"""
         return True
-    
+
     def emptyline(self):
         """This shall do nothing"""
         pass
@@ -89,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print([str(v) for k, v in models.storage.all().items()
                    if k.split('.')[0] == arg_pls[0]])
-            
+
     def do_update(self, arg):
         """This shall update an instance based on the class name and id
         by adding or updating attribute"""
@@ -112,6 +113,7 @@ class HBNBCommand(cmd.Cmd):
                 obj.save()
             else:
                 print("** no instance found **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
