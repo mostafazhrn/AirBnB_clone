@@ -2,7 +2,8 @@
 import os
 import json
 import uuid
-from models import storage  
+from models import storage
+from models.storage import storage
 from uuid import uuid4
 from datetime import datetime
 
