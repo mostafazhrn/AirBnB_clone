@@ -1,25 +1,27 @@
 #!/usr/bin/python3
-"""Defines the Place class."""
+"""
+This module shall contain the Place class
+"""
+import models
 from models.base_model import BaseModel
+from os import getenv
 
 
 class Place(BaseModel):
-    """Represent a place.
-
+    """This is the Place class
     Attributes:
-        city_id (str): The City id.
-        user_id (str): The User id.
-        name (str): The name of the place.
-        description (str): The description of the place.
-        number_rooms (int): The number of rooms of the place.
-        number_bathrooms (int): The number of bathrooms of the place.
-        max_guest (int): The maximum number of guests of the place.
-        price_by_night (int): The price by night of the place.
-        latitude (float): The latitude of the place.
-        longitude (float): The longitude of the place.
-        amenity_ids (list): A list of Amenity ids.
+        city_id (str): This represent the city id
+        user_id (str): This represent the user id
+        name (str): This represent the name
+        description (str): This represent the description
+        number_rooms (int): This represent the number of rooms
+        number_bathrooms (int): This represent the number of bathrooms
+        max_guest (int): This represent the max guest
+        price_by_night (int): This represent the price by night
+        latitude (float): This represent the latitude
+        longitude (float): This represent the longitude
+        amenity_ids (list): This represent the amenity ids
     """
-
     city_id = ""
     user_id = ""
     name = ""
