@@ -14,7 +14,7 @@ from os import path
 from hashlib import md5
 
 clsses = {"BaseModel": BaseModel, "User": User, "Place": Place,
-            "State": State, "City": City, "Review": Review, "Amenity": Amenity}
+          "State": State, "City": City, "Review": Review, "Amenity": Amenity}
 
 
 class FileStorage:
@@ -36,7 +36,7 @@ class FileStorage:
                 if cls == v.__class__.__name__:
                     new_dict[k] = v
             return new_dict
-        
+
     def new(self, obj):
         """This shall set the obj with the key"""
         if obj is not None:
