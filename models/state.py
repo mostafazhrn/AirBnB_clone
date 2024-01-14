@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-"""Defines the State class."""
+"""This shall represent the State class."""
+import models
 from models.base_model import BaseModel
+from os import getenv
 
 
 class State(BaseModel):
-    """Represent a state.
-
+    """This shall represent the state.
     Attributes:
         name (str): The name of the state.
     """
-
     name = ""
