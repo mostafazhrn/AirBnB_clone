@@ -26,46 +26,29 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def all(self, cls=None):
-        """This shall return the dictionary"""
-        if cls is None:
-            return self.__objects
-        else:
-            new_dict = {}
-            for k, v in self.__objects.items():
-                if cls == v.__class__.__name__:
-                    new_dict[k] = v
-            return new_dict
-
+    def all(self):
+        """This shall return the dictionary __objects"""
+        return FileStorage.__objects
+    
     def new(self, obj):
-        """This shall set the obj with the key"""
-        if obj is not None:
-            key = "{}.{}".format(obj.__class__.__name__, obj.id)
-            self.__objects[key] = obj
+        """This shall set in __objects obj with key <obj_class_name>.id"""
+        ocname = obj.__class__.__name__
+        FileStorage.__objects["{}.{}".format(ocname, obj.id)] = obj
 
     def save(self):
-        """This shall save the file"""
-        new_dict = {}
-        for k, v in self.__objects.items():
-            new_dict[k] = v.to_dict()
-        with open(self.__file_path, "w") as f:
-            json.dump(new_dict, f)
+        """ This shall serialize __objects to the JSON file __file_path"""
+        dictobj = FileStorage.__objects
+        objdict = {obj: dictobj[obj].to_dict() for obj in dictobj.keys()}
+        with open(FileStorage.__file_path, "w") as f:
+            json.dump(objdict, f)
 
     def reload(self):
-        """This shall reload the file"""
-        if path.exists(self.__file_path):
-            with open(self.__file_path, "r") as f:
-                new_dict = json.load(f)
-                for k, v in new_dict.items():
-                    self.__objects[k] = clsses[v["__class__"]](**v)
-
-    def delete(self, obj=None):
-        """This shall delete the obj"""
-        if obj is not None:
-            key = "{}.{}".format(obj.__class__.__name__, obj.id)
-            del self.__objects[key]
-            self.save()
-
-    def close(self):
-        """This shall call reload"""
-        self.reload()
+        """This shall deserialize the JSON file __file_path
+        to __objects, if it exists"""
+        if path.isfile(FileStorage.__file_path):
+            with open(FileStorage.__file_path) as f:
+                objdict = json.load(f)
+                for o in objdict.values():
+                    cls_name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(cls_name)(**o))
