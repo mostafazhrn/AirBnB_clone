@@ -37,6 +37,7 @@ class BaseModel:
     def save(self):
         """Update updated_at with the current datetime."""
         self.updated_at = datetime.today()
+        FileStorage.save()
         models.storage.save()
 
     def to_dict(self):
