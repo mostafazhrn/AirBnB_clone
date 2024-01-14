@@ -1,4 +1,6 @@
-This is the first step towards building our first full web application:
+This is the first step of the full project Airbnb
+we start with the console
+this is the first step towards building our first full web application:
 the AirBnB clone.
 what you are using now is the seed for our HBNB project
 with all other following projects:
