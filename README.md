@@ -1,6 +1,7 @@
 This is the first step towards building our first full web application:
 the AirBnB clone.
-what we are using now is the seed with all other following projects:
+what you are using now is the seed for our HBNB project
+with all other following projects:
 HTML/CSS templating, database storage, API, front-end integration…
 
 we put in place a parent class (called BaseModel) to take care of the
