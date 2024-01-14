@@ -28,7 +28,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(BaseModel, type(BaseModel(created_at="")))
 
     def test_with_updated_at(self):
-        self.assertEqual(BaseModel, type(BaseModel(updated_at=""))) 
+        self.assertEqual(BaseModel, type(BaseModel(updated_at="")))
 
 
 if __name__ == "__main__":
