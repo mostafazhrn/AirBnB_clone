@@ -24,18 +24,30 @@ class TestBaseModel(unittest.TestCase):
     def test_with_id(self):
         self.assertEqual(BaseModel, type(BaseModel(id="")))
 
-    def test_with_created_at(self):
-        self.assertEqual(BaseModel, type(BaseModel(created_at="")))
-
-    def test_with_updated_at(self):
-        self.assertEqual(BaseModel, type(BaseModel(updated_at="")))
-
-    def test_with_all(self):
-        self.assertEqual(BaseModel, type(BaseModel(
-            id="", created_at="", updated_at="")))
-
     def test_unused_args(self):
         self.assertEqual(BaseModel, type(BaseModel("unused")))
+
+
+class TestBaseModel_instance(unittest.TestCase):
+    """This is the test instance for BaseModel"""
+
+    def setUp(self):
+        """This shall set up the environment for testing"""
+        self.base = BaseModel()
+
+    def tearDown(self):
+        """This shall tear down the environment for testing"""
+        if os.path.isfile("file.json"):
+            os.remove("file.json")
+
+    def test_new_instance(self):
+        """This shall test the creation of a new instance"""
+        new = BaseModel()
+        self.assertIsInstance(new, BaseModel)
+        self.assertTrue(hasattr(new, "id"))
+        self.assertTrue(hasattr(new, "created_at"))
+        self.assertTrue(hasattr(new, "updated_at"))
+        self.assertFalse(hasattr(new, "random_attr"))
 
 
 if __name__ == "__main__":
