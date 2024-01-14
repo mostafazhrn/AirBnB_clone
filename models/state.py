@@ -8,6 +8,6 @@ from os import getenv
 class State(BaseModel):
     """This shall represent the state.
     Attributes:
-        name (str): The name of the state.
+        name (str): rep the name of the state.
     """
     name = ""
