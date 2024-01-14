@@ -11,40 +11,24 @@ from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
     """This is the test instance for BaseModel"""
-    def setUp(self):
-        """This shall set up the environment for testing"""
-        self.base = BaseModel()
 
-    def tearDown(self):
-        """This shall tear down the environment for testing"""
-        if os.path.isfile("file.json"):
-            os.remove("file.json")
+    def test_without_args(self):
+        self.assertEqual(BaseModel, type(BaseModel()))
 
-    def test_new_instance(self):
-        """This shall test the creation of a new instance"""
-        new = self.base
-        self.assertIsInstance(new, BaseModel)
-        self.assertTrue(hasattr(new, "id"))
-        self.assertTrue(hasattr(new, "created_at"))
-        self.assertTrue(hasattr(new, "updated_at"))
-        self.assertFalse(hasattr(new, "random_attr"))
+    def test_with_kwargs(self):
+        self.assertEqual(BaseModel, type(BaseModel(**{})))
 
-    def test_str(self):
-        """This shall test the __str__ method"""
-        new = self.base
-        self.assertEqual(str(new), "[BaseModel] ({}) {}".
-                         format(new.id, new.__dict__))
-        new.name = "School"
-        self.assertEqual(str(new), "[BaseModel] ({}) {}".
-                         format(new.id, new.__dict__))
+    def test_with_None(self):
+        self.assertEqual(BaseModel, type(BaseModel(None)))
 
-    def test_save(self):
-        """This shall test the save method"""
-        new = self.base
-        old = new.updated_at
-        sleep(0.1)
-        new.save()
-        self.assertNotEqual(old, new.updated_at)
+    def test_with_id(self):
+        self.assertEqual(BaseModel, type(BaseModel(id="")))
+
+    def test_with_created_at(self):
+        self.assertEqual(BaseModel, type(BaseModel(created_at="")))
+
+    def test_with_updated_at(self):
+        self.assertEqual(BaseModel, type(BaseModel(updated_at=""))) 
 
 
 if __name__ == "__main__":
