@@ -1,0 +1,46 @@
+#!/usr/bin/python3
+"""This module shall contain the unittests for console.py"""
+import unittest
+import console
+import os
+import inspect
+
+
+class TestConsole(unittest.TestCase):
+    """THis shall test the console.py file"""
+    def test_pep8(self):
+        """This shall test pep8"""
+        style = pep8.StyleGuide(quiet=True)
+        result = style.check_files(['console.py'])
+        self.assertEqual(result.total_errors, 0, "fix pep8")
+
+    def test_docstrings(self):
+        """This shall test docstrings"""
+        self.assertTrue(len(console.__doc__) >= 1)
+        self.assertTrue(len(console.HBNBCommand.__doc__) >= 1)
+        for func in dir(console.HBNBCommand):
+            self.assertTrue(len(func.__doc__) >= 1)
+
+    def test_console(self):
+        """This shall test the console"""
+        self.assertTrue(inspect.isclass(console.HBNBCommand))
+
+    def test_create(self):
+        """This shall test the create function"""
+        pass
+
+    def test_show(self):
+        """This shall test the show function"""
+        pass
+
+    def test_destroy(self):
+        """This shall test the destroy function"""
+        pass
+
+    def test_help_EOF(self):
+        """This shall test the help EOF function"""
+        h = "EOF command to exit the program\n"
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.HBNBCommand().onecmd("help EOF")
+            self.assertEqual(f.getvalue(), h)
+
