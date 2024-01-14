@@ -30,6 +30,13 @@ class TestBaseModel(unittest.TestCase):
     def test_with_updated_at(self):
         self.assertEqual(BaseModel, type(BaseModel(updated_at="")))
 
+    def test_with_all(self):
+        self.assertEqual(BaseModel, type(BaseModel(
+            id="", created_at="", updated_at="")))
+
+    def test_unused_args(self):
+        self.assertEqual(BaseModel, type(BaseModel("unused")))
+
 
 if __name__ == "__main__":
     unittest.main()
