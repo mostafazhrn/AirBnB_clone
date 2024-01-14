@@ -29,7 +29,7 @@ class FileStorage:
     def all(self):
         """This shall return the dictionary __objects"""
         return FileStorage.__objects
-    
+
     def new(self, obj):
         """This shall set in __objects obj with key <obj_class_name>.id"""
         ocname = obj.__class__.__name__
