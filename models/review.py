@@ -1,17 +1,19 @@
 #!/usr/bin/python3
-"""Defines the Review class."""
+"""
+This module shall contain the Review class
+"""
+import models
 from models.base_model import BaseModel
+from os import getenv
 
 
 class Review(BaseModel):
-    """Represent a review.
-
+    """This is the Review class
     Attributes:
-        place_id (str): The Place id.
-        user_id (str): The User id.
-        text (str): The text of the review.
+        place_id (str): This represent the place id
+        user_id (str): This represent the user id
+        text (str): This represent the text
     """
-
     place_id = ""
     user_id = ""
     text = ""
