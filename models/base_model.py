@@ -15,6 +15,7 @@ temp = "%Y-%m-%dT%H:%M:%S.%f"
 
 Base = declarative_base()
 
+
 class BaseModel:
     """This is the BaseModel class
     Attributes:
@@ -24,10 +25,10 @@ class BaseModel:
     """
     id = Column(String(60), primary_key=True)
     created_at = Column(DateTime, nullable=False,
-                            default=datetime.utcnow())
+                        default=datetime.utcnow())
     updated_at = Column(DateTime, nullable=False,
-                            default=datetime.utcnow())
-    
+                        default=datetime.utcnow())
+
     def __init__(self, *args, **kwargs):
         """this shall init Base MOdel"""
         if kwargs:
@@ -52,7 +53,7 @@ class BaseModel:
         """This shall return the string representation"""
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
-    
+
     def save(self):
         """This shall save the instance"""
         self.updated_at = datetime.now()
@@ -66,7 +67,7 @@ class BaseModel:
         if "_sa_instance_state" in new_dict:
             del new_dict["_sa_instance_state"]
         return new_dict
-    
+
     def delete(self):
         """This shall delete the instance"""
         models.storage.delete(self)
