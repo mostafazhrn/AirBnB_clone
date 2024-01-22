@@ -1,1 +1,0 @@
-This is a readme file for the task web_static part of the airbnb_clone for ALX software engineering program this tasks consists of 9 mandatory tasks and 4 advanced as follows
